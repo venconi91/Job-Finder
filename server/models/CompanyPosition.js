@@ -3,7 +3,7 @@ var sequelize = require("../config/config").getSequelize();
 
 
 // add validation!!!
-var Apply = sequelize.define('apply', {
+var CompanyPosition = sequelize.define('companyPosition', {
   title: {
     type: Sequelize.STRING,
     field: 'title', // Will result in an attribute that is firstName when user facing but first_name in the database
@@ -17,7 +17,7 @@ var Apply = sequelize.define('apply', {
     type: Sequelize.INTEGER,
     field: 'salary'
   },
-  user: {
+  company: {
     type: Sequelize.INTEGER,
     field: "user_id"
   }
@@ -25,20 +25,20 @@ var Apply = sequelize.define('apply', {
   freezeTableName: true // Model tableName will be the same as the model name
 });
 
-Apply.sync({force: true}).then(function () {
+CompanyPosition.sync({force: true}).then(function () {
   // Table created
-   Apply.create({
+   CompanyPosition.create({
     title: 'nodejs developer',
-    description: 'i am looking dor a job ',
+    description: 'we are looking for nodejs dev',
     salary: 1234,
 
   });
-  Apply.create({
-    title: 'java developer',
-    description: 'i am looking for a job',
+  CompanyPosition.create({
+    title: 'searching for java developer',
+    description: 'we are looking for java dev',
     salary: 4321,
     user: 13
   });
 });
 
-module.exports = Apply;
+module.exports = CompanyPosition;

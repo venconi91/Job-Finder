@@ -1,38 +1,58 @@
 var path = require('path');
 var rootPath = path.normalize(__dirname + '/../../')
-
 var Sequelize = require("sequelize");
-
-// should be one instance (singleton) !!!!!!!!!!!!!!
-
-var sequelize = new Sequelize('testmysqlnode', 'root', '', {
-  host: 'localhost',
-  dialect: 'mysql',
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  },
-});
 
 module.exports = {
 	_environment: "",
+	_sequelize: "",
 	development: {
-		sequelize: sequelize,
+		sequelize: this._sequelize,
 		rootPath: rootPath
 	},
 	production: {
-		sequelize: sequelize, // change this to production instance of sequelize
+		sequelize: this._sequelize,
 		rootPath: rootPath
 	},
 	getConfig: function(){
 		return this[this._environment];
 	},
-	setEnv: function(environment){
-		this._environment = environment;
-	},
 	getSequelize: function(){
-		return this[this._environment].sequelize;
+		return this._sequelize;
+	},
+	init: function(environment){
+		this._environment = environment;
+		this._sequelize = initSequelize(environment);
 	}
 }
 
+function initSequelize(environment){
+	var sequelizeEnv = sequelizeEnvironments[environment];
+	var sequelize = new Sequelize(sequelizeEnv.db, sequelizeEnv.user, sequelizeEnv.password, {
+	  host: sequelizeEnv.host,
+	  dialect: sequelizeEnv.dialect,
+	  pool: {
+	    max: 5,
+	    min: 0,
+	    idle: 10000
+	  },
+	});
+
+	return sequelize;
+}
+
+var sequelizeEnvironments = {
+	development: {
+		db: "testmysqlnode",
+		user: "root",
+		password: "",
+		host: "localhost",
+		dialect: 'mysql'
+	},
+	production: {
+		db: "productionDB",
+		user: "productionUser",
+		password: "productionPassword",
+		host: "productionHost",
+		dialect: 'mysql'
+	}
+}

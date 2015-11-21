@@ -12,8 +12,12 @@ module.exports = function(app){
 		var path = ""
 		res.render(__dirname + path)
 	})
+	
 	app.get("/api/allApplyings", controllers.applyings.getAllApplyings);
 	app.post("/api/createApplying", controllers.applyings.createApplying);
+
+	app.get("/api/allPositions", controllers.companyPosition.getAllPositions);
+	app.post("/api/createPosition", controllers.companyPosition.createPosition);
 
 	app.get("/", function(req,res){
 		res.render("index");
