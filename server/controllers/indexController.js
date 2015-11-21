@@ -1,5 +1,5 @@
 var usersController = require("./usersController")
-var applyingsController = require("./applayingsController")
+var applyingsController = require("./applyingsController")
 
 module.exports = {
 	users: usersController,

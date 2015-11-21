@@ -1,3 +1,4 @@
+var Sequelize = require("sequelize");
 var sequelize = require("../config/config").getSequelize();
 
 var User = sequelize.define('user', {

@@ -1,4 +1,4 @@
-var sequelize = require("./config").getSequelize();
+var controllers = require("../controllers/indexController");
 
 module.exports = function(app){
 
@@ -12,6 +12,8 @@ module.exports = function(app){
 		var path = ""
 		res.render(__dirname + path)
 	})
+	app.get("/api/allApplyings", controllers.applyings.getAllApplyings);
+	app.post("/api/createApplying", controllers.applyings.createApplying);
 
 	app.get("/", function(req,res){
 		res.render("index");

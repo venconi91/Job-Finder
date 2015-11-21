@@ -1,10 +1,5 @@
 var express = require("express");
-var http = require('http')
-//var jade = require("jade");
-
-//var Sequelize = require("sequelize");
-
-
+var http = require('http');
 var port = 3000;
 
 var express = require("express");

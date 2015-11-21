@@ -2,7 +2,9 @@ var path = require('path');
 var rootPath = path.normalize(__dirname + '/../../')
 
 var Sequelize = require("sequelize");
-// check if it should be singleton!!!
+
+// should be one instance (singleton) !!!!!!!!!!!!!!
+
 var sequelize = new Sequelize('testmysqlnode', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',
