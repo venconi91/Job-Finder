@@ -1,4 +1,5 @@
 var controllers = require("../controllers/indexController");
+var auth = require("./auth");
 
 module.exports = function(app){
 
@@ -23,4 +24,7 @@ module.exports = function(app){
 		res.render("index");
 	})
 
+	app.post("/login", auth.login)
+	app.post("/logout", auth.logout)
+	app.post("/signup", auth.signup)
 }

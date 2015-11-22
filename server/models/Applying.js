@@ -25,20 +25,20 @@ var Apply = sequelize.define('apply', {
   freezeTableName: true // Model tableName will be the same as the model name
 });
 
-Apply.sync({force: true}).then(function () {
-  // Table created
-   Apply.create({
-    title: 'nodejs developer',
-    description: 'i am looking dor a job ',
-    salary: 1234,
+// Apply.sync({force: true}).then(function () {
+//   // Table created
+//    Apply.create({
+//     title: 'nodejs developer',
+//     description: 'i am looking dor a job ',
+//     salary: 1234,
 
-  });
-  Apply.create({
-    title: 'java developer',
-    description: 'i am looking for a job',
-    salary: 4321,
-    user: 13
-  });
-});
+//   });
+//   Apply.create({
+//     title: 'java developer',
+//     description: 'i am looking for a job',
+//     salary: 4321,
+//     user: 13
+//   });
+// });
 
 module.exports = Apply;

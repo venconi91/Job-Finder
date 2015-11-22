@@ -2,6 +2,7 @@ var express = require("express");
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var passport = require("passport");
 
 module.exports = function(app, config){
 	var config = config.getConfig();
@@ -15,4 +16,6 @@ module.exports = function(app, config){
 	app.use(bodyParser.urlencoded({ extended: false }))
 	app.use(bodyParser.json())
 	app.use(cookieParser());
+	app.use(passport.initialize());
+	app.use(passport.session());
 }

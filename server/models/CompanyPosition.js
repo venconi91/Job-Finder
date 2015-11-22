@@ -25,20 +25,20 @@ var CompanyPosition = sequelize.define('companyPosition', {
   freezeTableName: true // Model tableName will be the same as the model name
 });
 
-CompanyPosition.sync({force: true}).then(function () {
-  // Table created
-   CompanyPosition.create({
-    title: 'nodejs developer',
-    description: 'we are looking for nodejs dev',
-    salary: 1234,
+// CompanyPosition.sync({force: true}).then(function () {
+//   // Table created
+//    CompanyPosition.create({
+//     title: 'nodejs developer',
+//     description: 'we are looking for nodejs dev',
+//     salary: 1234,
 
-  });
-  CompanyPosition.create({
-    title: 'searching for java developer',
-    description: 'we are looking for java dev',
-    salary: 4321,
-    user: 13
-  });
-});
+//   });
+//   CompanyPosition.create({
+//     title: 'searching for java developer',
+//     description: 'we are looking for java dev',
+//     salary: 4321,
+//     user: 13
+//   });
+// });
 
 module.exports = CompanyPosition;
