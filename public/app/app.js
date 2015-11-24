@@ -8,4 +8,8 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: '/home',
             controller: ''
         })
+        .when('/signup', {
+            templateUrl: '/partials/account/signup',
+            controller: 'SignUpCtrl'
+        })
 });

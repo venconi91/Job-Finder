@@ -9,9 +9,7 @@ module.exports = function(app){
 	})
 
 	app.get("/partials/:partialFolder/:partialName", function(req, res){
-	// get name + partialName
-		var path = ""
-		res.render(__dirname + path)
+		res.render('../../public/app/' + req.params.partialFolder + '/' + req.params.partialName)
 	})
 	
 	app.get("/api/allApplyings", controllers.applyings.getAllApplyings);
@@ -27,4 +25,9 @@ module.exports = function(app){
 	app.post("/login", auth.login)
 	app.post("/logout", auth.logout)
 	app.post("/signup", auth.signup)
+	app.get("/isAuthenticated", auth.isAuthenticated)
+
+
+	// user
+	app.post("/api/users", controllers.users.createUser)
 }

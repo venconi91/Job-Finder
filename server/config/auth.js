@@ -44,14 +44,12 @@ module.exports = {
         // redirect res.redirect('/');
     },
     signup: function(req, res) {
-  // For security measurement we remove the roles from the req.body object
+      // For security measurement we remove the roles from the req.body object
       delete req.body.roles;
-
-      var message = null;
 
       var user = User.build(req.body);
 
-      user.provider = 'local';
+      //user.provider = 'local';
       user.salt = user.makeSalt();
       user.hashedPassword = user.encryptPassword(req.body.password, user.salt);
       //user.displayName = user.firstName + ' ' + user.lastName;
@@ -64,20 +62,21 @@ module.exports = {
       }
 
       user.save().then(function() {
-        console.log("vlizaaaaaaaaaaaaaaaaaaaaaaaaa")
         req.login(user, function(err) {
           if (err)
             //return next(err);
             res.status(400).send(err);
-          res.json(user);
+          res.json(user);                 // remove salt and hashed password properties 
         });
       }).catch(function(err) {
         res.status(400).send(err);
       });
     },
-
-
-    isAuthenticated: function(req, res, next) {
+    isAuthenticated: function(req, res){
+      var is = req.isAuthenticated();
+      res.send({"isAuthenticated": is})
+    },
+    isAuthenticated2: function(req, res, next) { // middleware
         if (!req.isAuthenticated()) {
             res.status(403);
             res.end();

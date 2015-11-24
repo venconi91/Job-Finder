@@ -86,6 +86,19 @@ var User = sequelize.define('user', {
 
 User.sync({force: true}).then(function () {
   // Table created
+  
+  var obj = {
+    "firstName": "venci first name",
+    "lastName": "venci last name",
+    "email": "venci@abv.bg",
+    "username": "venci username",
+    "password": "venci password"
+  }
+  var user = User.build(obj);
+  user.salt = user.makeSalt();
+  user.hashedPassword = user.encryptPassword(obj.password, user.salt);
+  user.save();
+
 });
 
 module.exports = User;
