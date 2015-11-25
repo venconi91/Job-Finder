@@ -1,8 +1,6 @@
 var app = angular.module('app', ['ngResource', 'ngRoute'])
 
 app.config(function($routeProvider, $locationProvider) {
-    // $locationProvider.html5Mode(true);
-
     $routeProvider
         .when('/', {
             templateUrl: '/home',
@@ -11,5 +9,9 @@ app.config(function($routeProvider, $locationProvider) {
         .when('/signup', {
             templateUrl: '/partials/account/signup',
             controller: 'SignUpCtrl'
+        })
+        .when("/signin", {
+            templateUrl: 'partials/account/signin',
+            controller: 'signinCtrl'
         })
 });

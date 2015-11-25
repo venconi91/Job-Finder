@@ -2,23 +2,7 @@ var passport = require('passport');
 var User = require("../models/User");
 
 module.exports = {
-    login: function(req, res, next) {
-        var auth = passport.authenticate('local', function(err, user) {
-            if (err) return next(err);
-            if (!user) {
-                res.send({success: false})
-            }
-
-            req.logIn(user, function(err) {
-                if (err) return next(err);
-                res.send({success: true, user: user});
-            })
-        });
-
-        auth(req, res, next);
-    },
     signin: function(req, res, next) {
-
       passport.authenticate('local', function(err, user, info) {
 
         if (err || !user) {
@@ -66,17 +50,17 @@ module.exports = {
           if (err)
             //return next(err);
             res.status(400).send(err);
-          res.json(user);                 // remove salt and hashed password properties 
+          res.json(user);
         });
       }).catch(function(err) {
         res.status(400).send(err);
       });
     },
-    isAuthenticated: function(req, res){
-      var is = req.isAuthenticated();
-      res.send({"isAuthenticated": is})
-    },
-    isAuthenticated2: function(req, res, next) { // middleware
+    // isAuthenticated: function(req, res){
+    //   var is = req.isAuthenticated();
+    //   res.send({"isAuthenticated": is})
+    // },
+    isAuthenticated: function(req, res, next) {
         if (!req.isAuthenticated()) {
             res.status(403);
             res.end();

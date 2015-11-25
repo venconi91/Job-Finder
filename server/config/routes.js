@@ -22,9 +22,13 @@ module.exports = function(app){
 		res.render("index");
 	})
 
-	app.post("/login", auth.login)
-	app.post("/logout", auth.logout)
-	app.post("/signup", auth.signup)
+	//app.post("/login", auth.login)
+	
+
+	// auth
+	app.post("/signup", auth.signup);
+	app.post("/signin", auth.signin);
+	app.post("/logout", auth.logout);
 	app.get("/isAuthenticated", auth.isAuthenticated)
 
 

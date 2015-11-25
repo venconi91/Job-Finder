@@ -11,6 +11,7 @@ module.exports = function() {
     },
     function(username, password, done) {
           User.findOne({
+            attributes: ['id', 'username', 'displayName', 'email', 'profileImageURL', 'roles'],
             where: {
               username: username.toLowerCase()
             }
@@ -29,7 +30,7 @@ module.exports = function() {
     ));
 
     passport.serializeUser(function(user, done) {
-        done(null, user.id); // from mysql? ken=> _id
+        done(null, user.id);
     });
 
     passport.deserializeUser(function(id, done) { // from sean
