@@ -3,9 +3,26 @@ var User = require("../models/User");
 
 module.exports = {
     signin: function(req, res, next) {
-      console.log("vliza signin")
+        var auth = passport.authenticate('local', function(err, user) {
+            if (err) return next(err);
+            if (!user) {
+                res.send({success: false})
+            }
+
+            user.password = undefined;
+            user.salt = undefined;
+            user.hashedPassword = undefined;
+
+            req.logIn(user, function(err) {
+                if (err) return next(err);
+                res.send({success: true, user: user});
+            })
+        });
+
+        auth(req, res, next);
+    },
+    signin2: function(req, res, next) {
       passport.authenticate('local', function(err, user, info) {
-console.log("ta6aciiiiiiiiiiiiiiiiiiiiiiiiii")
         if (err || !user) {
           res.status(400).send(info);
         } else {
@@ -47,6 +64,10 @@ console.log("ta6aciiiiiiiiiiiiiiiiiiiiiiiiii")
       }
 
       user.save().then(function() {
+            user.password = undefined;
+            user.salt = undefined;
+            user.hashedPassword = undefined;
+
         req.login(user, function(err) {
           if (err)
             //return next(err);

@@ -11,7 +11,7 @@ module.exports = function() {
     },
     function(username, password, done) {
           User.findOne({
-            attributes: ['id', 'username', 'displayName', 'email', 'profileImageURL', 'roles'],
+            //attributes: ['id', 'username', 'displayName', 'email', 'profileImageURL', 'roles'],
             where: {
               username: username.toLowerCase()
             }
