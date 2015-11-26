@@ -34,4 +34,8 @@ module.exports = function(app){
 
 	// user
 	app.post("/api/users", controllers.users.createUser)
+
+	app.get("/api/users/:userId", function(){
+		
+	})
 }

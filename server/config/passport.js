@@ -16,6 +16,7 @@ module.exports = function() {
               username: username.toLowerCase()
             }
           }).then(function(user) {
+            console.log("passport find")
             if (!user) {
               return done(user);
             }
@@ -42,6 +43,7 @@ module.exports = function() {
         }).then(function(user) {
             //case 1: done(true,user) ;
             // case 2: done(false, null) 
+            console.log("deserialise useeeeeeeeeeeeeeer")
           var err = (!user) ? true : false; 
           done(err, user);
         });

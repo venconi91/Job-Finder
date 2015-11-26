@@ -3,8 +3,9 @@ var User = require("../models/User");
 
 module.exports = {
     signin: function(req, res, next) {
+      console.log("vliza signin")
       passport.authenticate('local', function(err, user, info) {
-
+console.log("ta6aciiiiiiiiiiiiiiiiiiiiiiiiii")
         if (err || !user) {
           res.status(400).send(info);
         } else {
