@@ -17,6 +17,10 @@
             div(class="col-lg-10")
               input(type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="user.password")
           div(class="form-group")
+            label(for="inputRole" class="col-lg-2 control-label") Company
+            div(class="col-lg-10")
+              input(type="checkbox" class="form-control" id="inputRole"  ng-model="user.isCompany")
+          div(class="form-group")
             div(class="col-lg-10 col-lg-offset-2")
               button(type="submit" class="btn btn-primary" ng-click="signup(user)") Register
               button(type="reset" class="btn btn-default") Reset

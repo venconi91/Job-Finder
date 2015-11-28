@@ -32,6 +32,11 @@ var User = sequelize.define('user', {
       unique: true,
       allowNull: false
     },
+    roles: {
+      type: Sequelize.STRING,
+      //defaultValue: ["user"],
+      //isArray: true
+    },
     profileImageURL: Sequelize.STRING,
     hashedPassword: {
       type: Sequelize.STRING,
@@ -69,8 +74,8 @@ User.sync({force: true}).then(function () {
   var user = User.build(obj);
   user.salt = user.makeSalt();
   user.hashedPassword = user.encryptPassword(obj.password, user.salt);
+  user.roles = "company"
   user.save();
-
 });
 
 module.exports = User;

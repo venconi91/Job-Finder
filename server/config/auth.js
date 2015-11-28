@@ -78,10 +78,6 @@ module.exports = {
         res.status(400).send(err);
       });
     },
-    // isAuthenticated: function(req, res){
-    //   var is = req.isAuthenticated();
-    //   res.send({"isAuthenticated": is})
-    // },
     isAuthenticated: function(req, res, next) {
         if (!req.isAuthenticated()) {
             res.status(403);
@@ -92,6 +88,21 @@ module.exports = {
         }
     },
     isInRole: function(role) {
-        return false;
+      return function(req,res, next){
+        var isInRole = req.roles.indexOf(role) === -1 ? false : true;
+        if (req.isAuthenticated() && isInRole) {
+          next();
+        } else {
+          res.status(403).end();
+        }
+      }
+    },
+    isCompanyAuthorized: function(req, res, next){
+      var isCompany = req.roles.indexOf("company") === -1 ? false : true;
+      if (req.isAuthenticated() && isCompany) {
+        next()
+      } else {
+        res.status(403).end();
+      }
     }
 }
