@@ -14,4 +14,8 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: 'partials/account/signin',
             controller: 'signinCtrl'
         })
+        .when("/profile", {
+            templateUrl: "partials/profile/profile.jade",
+            controller: "profileCtrl"
+        })
 });

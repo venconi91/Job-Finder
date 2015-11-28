@@ -1,0 +1,11 @@
+.container
+	.row
+		div(class="col-md-2")
+			.row
+				img(src="/images/default_avatar.jpg" ng-src="{{userInfo.profileImageURL}}")
+			.row
+				p stackoverflow link
+				p github link
+		div(class="col-md-10")
+			p Stats about links
+			p Username: {{ userInfo.username}}

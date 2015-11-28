@@ -63,7 +63,8 @@ User.sync({force: true}).then(function () {
     "lastName": "venci last name",
     "email": "venci@abv.bg",
     "username": "venci",
-    "password": "venci"
+    "password": "venci",
+    "profileImageURL": "/images/test_avatar.jpg"
   }
   var user = User.build(obj);
   user.salt = user.makeSalt();
