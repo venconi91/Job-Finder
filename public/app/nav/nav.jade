@@ -1,0 +1,22 @@
+.navbar-default(ng-controller="navCtrl")
+    ul.nav.navbar-nav
+        li(ng-hide="identity.isAuthenticated()")
+            a(href="#/signin") Login
+        li
+            a(href="#/jobs") Jobs
+        li
+            a(href="#/Events") Events
+        li
+            a(href="#/contests") Contests
+        li
+            a(href="#/news") News
+        li
+            a(href="#/faq") FAQ
+        li(ng-show="identity.isAuthenticated()")
+            a(href="#/profile") profile
+        li.dropdown(ng-show="identity.isAuthenticated()")
+            a.dropdown-toggle(href="" data-toggle="dropdown") {{identity.currentUser.username}}
+                span.caret
+            ul.dropdown-menu
+                li
+                    a(href="#" ng-click="logout()") Logout

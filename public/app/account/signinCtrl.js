@@ -14,15 +14,4 @@ app.controller('signinCtrl', function($scope, $location, notifier, identity, aut
             }
         });
     }
-
-    $scope.logout = function() {
-        auth.logout().then(function() {
-            notifier.success('Successful logout!');
-            if ($scope.user) {
-                $scope.user.username = '';
-                $scope.user.password = '';
-            }
-            $location.path('/');
-        })
-    }
 })
