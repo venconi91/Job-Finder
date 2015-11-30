@@ -14,6 +14,7 @@ require("./server/config/express")(app, config);
 //require("./server/config/passport")(); 
 require("./server/config/routes")(app);
 require("./server/config/passport")();
+require("./server/models/syncModels")(env);
 
 app.listen(port);
 console.log("app listen on port: " + port)

@@ -1,7 +1,6 @@
 var sequelize = require("../config/config").getSequelize();
-var Applying = require("../models/Applying");
+var Apply = require("../models/Apply");
 
-// catch possible errors!!!
 module.exports = {
 	createApplying: function (req, res) {
         Applying.create({
