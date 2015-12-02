@@ -2,10 +2,8 @@ var Sequelize = require("sequelize");
 var sequelize = require("../config/config").getSequelize();
 var crypto = require("crypto");
 
-var JobPosition = require("./JobPosition");
-var Apply = require("./Apply");
-
-var User = sequelize.define('user', {
+module.exports = function(sequelize, DataTypes){
+var User = sequelize.define('User', {
     firstName: {
       type: Sequelize.STRING,
       validate: {
@@ -40,7 +38,8 @@ var User = sequelize.define('user', {
       type: Sequelize.STRING,
     },
     salt: Sequelize.STRING
-  }, {
+    
+    },{
     instanceMethods: {
       makeSalt: function() {
         return crypto.randomBytes(16).toString('base64');
@@ -54,8 +53,28 @@ var User = sequelize.define('user', {
         salt = new Buffer(salt, 'base64');
         return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
       }
-    }
+    },
+      associate: function(models){
+        User.hasMany(models.Apply);
+        User.hasMany(models.JobPosition);
+      }
+    
 });
 
+return User;
+}
 
-module.exports = User;
+//module.exports = User;
+// var obj = {
+//       "firstName": "venci first name",
+//       "lastName": "venci last name",
+//       "email": "venci@abv.bg",
+//       "username": "venci",
+//       "password": "venci",
+//       "profileImageURL": "/images/test_avatar.jpg"
+//     }
+//     var user = User.build(obj);
+//     user.salt = user.makeSalt();
+//     user.hashedPassword = user.encryptPassword(obj.password, user.salt);
+//     user.roles = "company"
+//     user.save();
