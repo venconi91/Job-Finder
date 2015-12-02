@@ -15,8 +15,8 @@ module.exports = function(app){
 	app.get("/api/allApplyings", controllers.applyings.getAllApplyings);
 	app.post("/api/createApplying", controllers.applyings.createApplying);
 
-	app.get("/api/allPositions", controllers.companyPosition.getAllPositions);
-	app.post("/api/createPosition", controllers.companyPosition.createPosition);
+	app.get("/api/allPositions", controllers.jobPositionController.getAllPositions);
+	app.post("/api/createPosition", controllers.jobPositionController.createPosition);
 
 	app.get("/", function(req,res){
 		res.render("index");

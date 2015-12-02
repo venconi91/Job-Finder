@@ -1,5 +1,5 @@
 var passport = require('passport');
-var User = require("../models/User");
+var User = require("../models").User;
 
 module.exports = {
     signin: function(req, res, next) {
@@ -56,12 +56,7 @@ module.exports = {
       user.hashedPassword = user.encryptPassword(req.body.password, user.salt);
       //user.displayName = user.firstName + ' ' + user.lastName;
 
-      //MUST DELETE THIS WHEN PRODUCTION
-      if (req.body.is_admin === true) {
-        user.roles = ["admin", "user"];
-      } else {
-        user.roles = ["user"];
-      }
+      req.body.isCompany === true ? user.roles = "company" : "";
 
       user.save().then(function() {
             user.password = undefined;
