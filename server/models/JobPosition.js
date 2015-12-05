@@ -27,6 +27,10 @@ module.exports = function(sequelize, DataTypes){
         associate: function(models){
           JobPosition.belongsTo(models.User);
           //JobPosition.hasMany(model.JobPosition);
+          JobPosition.belongsToMany( models.User, {
+            as: "Apply",
+            through: models.Apply
+          });
         }
       }
   });

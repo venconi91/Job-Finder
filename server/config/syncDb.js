@@ -21,7 +21,8 @@ function syncModelsAndSync(){
 }
 
 function seedData(){
-	seedUsers()
+	seedUsers();
+	seedJobs();
 
 }
 
@@ -39,4 +40,16 @@ function seedUsers(){
     user.hashedPassword = user.encryptPassword(obj.password, user.salt);
     user.roles = "company"
     user.save();
+}
+
+function seedJobs(){
+	var obj = {
+      "title": "java developer",
+      "content": "we are looking for a java developer",
+      "salary": 1234,
+      "location": "sofia",
+      "UserId": 1
+    }
+    var jobPosition = models.JobPosition.build(obj);
+    jobPosition.save();
 }

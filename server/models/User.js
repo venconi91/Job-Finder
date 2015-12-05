@@ -57,24 +57,15 @@ var User = sequelize.define('User', {
       associate: function(models){
         User.hasMany(models.Apply);
         User.hasMany(models.JobPosition);
+        //User.hasMany(models.JobPosition);
+        User.belongsToMany( models.JobPosition, {
+          as: "Apply",
+          through: models.Apply
+        });
       }
     
 });
 
 return User;
-}
 
-//module.exports = User;
-// var obj = {
-//       "firstName": "venci first name",
-//       "lastName": "venci last name",
-//       "email": "venci@abv.bg",
-//       "username": "venci",
-//       "password": "venci",
-//       "profileImageURL": "/images/test_avatar.jpg"
-//     }
-//     var user = User.build(obj);
-//     user.salt = user.makeSalt();
-//     user.hashedPassword = user.encryptPassword(obj.password, user.salt);
-//     user.roles = "company"
-//     user.save();
+}
