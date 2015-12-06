@@ -19,9 +19,7 @@ module.exports = function(app){
 	app.get("/api/myJobOffers", controllers.jobPositionController.getMyPositions);
 	app.post("/api/myJobOffers", auth.isAuthenticated, controllers.jobPositionController.createPosition);
 
-	app.get("/", function(req,res){
-		res.render("index");
-	})	
+	
 
 	// auth
 	app.post("/signup", auth.signup);
@@ -33,7 +31,9 @@ module.exports = function(app){
 	// user
 	app.post("/api/users", controllers.users.createUser)
 
-	app.get("/api/users/:userId", function(){
-		
-	})
+	app.get("/api/users/:userId", function(){})
+
+	app.get("*", function(req,res){
+		res.render("index", {currentUser: req.user});
+	})	
 }
