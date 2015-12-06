@@ -15,7 +15,6 @@ function syncModelsAndSync(){
 	 // 	});
 	 // })
 	
-
 	//models.User.sync();
 	//models.JobPosition.sync();
 	//models.Apply.sync();}
@@ -28,18 +27,31 @@ function seedData(){
 
 function seedUsers(){
 	var obj = {
-      "firstName": "venci first name",
-      "lastName": "venci last name",
-      "email": "venci@abv.bg",
-      "username": "venci",
-      "password": "venci",
-      "profileImageURL": "/images/test_avatar.jpg"
-    }
-    var user = models.User.build(obj);
-    user.salt = user.makeSalt();
-    user.hashedPassword = user.encryptPassword(obj.password, user.salt);
-    user.roles = "company"
-    user.save();
+    "firstName": "venci first name",
+    "lastName": "venci last name",
+    "email": "venci@abv.bg",
+    "username": "venci",
+    "password": "venci",
+    "profileImageURL": "/images/test_avatar.jpg"
+  }
+  var user = models.User.build(obj);
+  user.salt = user.makeSalt();
+  user.hashedPassword = user.encryptPassword(obj.password, user.salt);
+  user.roles = "company"
+  user.save();
+
+  var obj2 = {
+    "firstName": "go6o",
+    "lastName": "go6ov",
+    "email": "go6o@abv.bg",
+    "username": "go6o",
+    "password": "go6o"
+  }
+  var user2 = models.User.build(obj2);
+  user2.salt = user2.makeSalt();
+  user2.hashedPassword = user2.encryptPassword(obj2.password, user2.salt);
+  user2.save();
+
 }
 
 function seedJobs(){

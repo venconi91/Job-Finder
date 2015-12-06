@@ -1,7 +1,21 @@
 .container
   div(class="col-md-7")
-    div(ng-repeat="position in allPositions")
-      p {{position.title}}
+    div(class="row")
+      div(class="col-md-6" ng-repeat="position in allPositions")
+        div(class="well bs-component")
+          div(class="panel-title") 
+            label Title:
+            |   {{position.title}}
+          div(class="panel-body") 
+            p 
+              label Description: 
+              |   {{position.description}}
+            p 
+              label Salary:
+              |   {{position.salary}}
+            p 
+              label Location: 
+              |   {{position.location}}
   div(class="col-md-5")
     div(class="well bs-component")
       form(class="form-horizontal")
