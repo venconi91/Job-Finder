@@ -3,9 +3,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require("passport");
+var favicon = require("serve-favicon");
 
 module.exports = function(app, config){
 	var config = config.getConfig();
+	app.use(favicon(config.rootPath + '/public/images/favicon.png'));
+	
 	app.set("view engine", "jade");
 	app.set("views", config.rootPath + "/server/views");
 
