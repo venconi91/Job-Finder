@@ -16,14 +16,12 @@ module.exports = function(app){
 	app.post("/api/createApplying", controllers.applyings.createApplying);
 
 	app.get("/api/allPositions", controllers.jobPositionController.getAllPositions);
-	app.post("/api/createPosition", auth.isAuthenticated, controllers.jobPositionController.createPosition);
+	app.get("/api/myJobOffers", controllers.jobPositionController.getMyPositions);
+	app.post("/api/myJobOffers", auth.isAuthenticated, controllers.jobPositionController.createPosition);
 
 	app.get("/", function(req,res){
 		res.render("index");
-	})
-
-	//app.post("/login", auth.login)
-	
+	})	
 
 	// auth
 	app.post("/signup", auth.signup);

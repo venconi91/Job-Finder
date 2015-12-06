@@ -8,22 +8,22 @@ module.exports = function (){
 function syncModelsAndSync(){
 	
 
-	 sequelize.dropAllSchemas().then(function(){
+	 // sequelize.dropAllSchemas().then(function(){
 
-	 	sequelize.sync().then(function () {
-	  		seedData()
-	 	});
-	 })
-	//sequelize.dropAllSchemas();
+	 // 	sequelize.sync().then(function () {
+	 //  		seedData()
+	 // 	});
+	 // })
+	
+
 	//models.User.sync();
 	//models.JobPosition.sync();
-	//models.Apply.sync();
+	//models.Apply.sync();}
 }
 
 function seedData(){
 	seedUsers();
 	seedJobs();
-
 }
 
 function seedUsers(){
@@ -43,13 +43,25 @@ function seedUsers(){
 }
 
 function seedJobs(){
+  console.log("asd")
 	var obj = {
-      "title": "java developer",
-      "content": "we are looking for a java developer",
-      "salary": 1234,
-      "location": "sofia",
-      "UserId": 1
-    }
-    var jobPosition = models.JobPosition.build(obj);
-    jobPosition.save();
+    "title": "java developer",
+    "description": "we are looking for a java developer",
+    "salary": 1234,
+    "location": "sofia",
+    "UserId": 1
+  }
+
+  var jobPosition = models.JobPosition.build(obj);
+  jobPosition.save();
+
+  var obj2 = {
+    "title": "asp.net developer",
+    "description": "we are looking for a asp.net developer",
+    "salary": 1234,
+    "location": "plovdiv",
+    "UserId": 1
+  }
+  var jobPosition2 = models.JobPosition.build(obj2);
+  jobPosition2.save();
 }

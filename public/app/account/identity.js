@@ -1,4 +1,6 @@
 app.factory('identity', function($window, UsersResource) {
+    var companyRole = "company";
+
     var user;
     if ($window.bootstrappedUserObject) {
         user = new UsersResource();
@@ -11,6 +13,9 @@ app.factory('identity', function($window, UsersResource) {
         },
         isAuthorizedForRole: function(role) {
             return !!this.currentUser && this.currentUser.roles.indexOf(role) > -1;
+        },
+        isCompany: function() {
+            return !!this.currentUser && this.currentUser.roles.indexOf(companyRole) > -1;
         }
     }
 });

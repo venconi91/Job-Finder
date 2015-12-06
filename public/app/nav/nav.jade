@@ -6,6 +6,10 @@
             a(href="#/jobs") Jobs
         li
             a(href="#/Events") Events
+        li(ng-show="identity.isCompany()")
+            a(href="#/Applyings") Applyings
+        li(ng-show="identity.isCompany()")
+            a(href="#/myPositions") My Positions
         li
             a(href="#/contests") Contests
         li

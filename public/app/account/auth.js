@@ -17,7 +17,6 @@ app.factory('auth', function($http, $q, identity, UsersResource) {
             var deferred = $q.defer();
 
             $http.post('/signin', user).success(function(response) {
-                console.log(response)
                 if (response.success) {
                     var user = new UsersResource();
                     angular.extend(user, response.user);

@@ -11,11 +11,9 @@ app.controller('signinCtrl', function($scope, $location, notifier, identity, aut
         	console.log(success);
             if (success) {
                 notifier.success('Successful login!');
-                console.log("success")
             }
             else {
                 notifier.error('Username/Password combination is not valid!');
-                console.log("error")
             }
         });
     }

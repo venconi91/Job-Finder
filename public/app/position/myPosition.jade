@@ -1,0 +1,31 @@
+.container
+  div(class="col-md-7")
+    div(ng-repeat="position in allPositions")
+      p {{position.title}}
+  div(class="col-md-5")
+    div(class="well bs-component")
+      form(class="form-horizontal")
+        fieldset
+          legend Create Positions
+          div(class="form-group")
+            label(for="positionTitle" class="col-md-3 control-label") Title
+            div(class="col-md-9")
+              input(type="text" class="form-control" id="positionTitle" placeholder="Position Title" ng-model="position.title")
+          div(class="form-group")
+            label(for="positionDescription" class="col-md-3 control-label") Description
+            div(class="col-md-9")
+              textarea(class="form-control" id="positionDescription" placeholder="Description" ng-model="position.description")
+          div(class="form-group")
+            label(for="positionSalary" class="col-md-3 control-label") Salary
+            div(class="col-md-9")
+              input(type="text" class="form-control" id="positionSalary" placeholder="Position Salary" ng-model="position.salary")
+          div(class="form-group")
+            label(for="positionLocation" class="col-md-3 control-label") Job Location
+            div(class="col-md-9")
+              input(type="text" class="form-control" id="positionLocation" placeholder="Position Location" ng-model="position.location")
+          div(class="form-group")
+            div(class="col-md-10 col-md-offset-2")
+              button(type="submit" class="btn btn-primary" ng-click="createPosition(position)") Create
+              button(type="reset" class="btn btn-default") Reset
+        </fieldset>
+      </form>
