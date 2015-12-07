@@ -16,8 +16,9 @@ module.exports = {
         
     },
     getAllPositions: function (req, res) {
-        companyPosition.findAll().then(function(companyPositions){
-        	res.send(companyPositions);
+        models.JobPosition.findAll()           // add filter
+        .then(function(jobPositions){
+        	res.send(jobPositions);
         });
         
     },

@@ -15,11 +15,11 @@ module.exports = function(app){
 	app.get("/api/allApplyings", controllers.applyings.getAllApplyings);
 	app.post("/api/createApplying", controllers.applyings.createApplying);
 
-	app.get("/api/allPositions", controllers.jobPositionController.getAllPositions);
+	//app.get("/api/allPositions", controllers.jobPositionController.getAllPositions);
 	app.get("/api/myJobOffers", controllers.jobPositionController.getMyPositions);
 	app.post("/api/myJobOffers", auth.isAuthenticated, controllers.jobPositionController.createPosition);
 
-	
+	app.get("/api/jobs", controllers.jobPositionController.getAllPositions);
 
 	// auth
 	app.post("/signup", auth.signup);
