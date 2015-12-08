@@ -6,8 +6,14 @@ app.controller('jobCtrl', function($scope, jobService) {
 		//console.log(err);
 	})
 	
-	$scope.search = function(searchText){
-		console.log(searchText);
-		//jobService.searchJobs(searchText)
+	$scope.search = function(searchText, locationName){
+		
+		jobService.searchJobs(searchText, locationName)
+		.$promise
+        .then(function (jobsData) {
+            $scope.jobs = jobsData;
+        }, function (error) {
+            console.log(error)
+        })
 	}
 });

@@ -38,5 +38,32 @@ module.exports = {
         .catch(function(err){
             res.send(err);
         })
+    },
+    getSearchedJobs: function(req, res){ // check if can be in one method with get all positions
+        var searchText = req.query.searchText.trim() || "";
+        var locationName = req.query.locationName.trim() || "";
+        
+        models.JobPosition
+        .findAll({
+            where: {
+                $or: [{
+                    title: {
+                        $like: "%" + searchText + "%"
+                    }
+                },{
+                    description: {
+                        $like: "%" + searchText + "%"
+                    }
+                },{
+                    location: {
+                        $like: "%" + locationName + "%"
+                    }
+                }]
+            }
+        })
+        .then(function(jobPositions){
+            res.send(jobPositions);
+        });
+
     }
 }

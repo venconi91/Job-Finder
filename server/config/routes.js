@@ -20,7 +20,7 @@ module.exports = function(app){
 	app.post("/api/myJobOffers", auth.isAuthenticated, controllers.jobPositionController.createPosition);
 
 	app.get("/api/jobs", controllers.jobPositionController.getAllPositions);
-
+	app.get("/api/jobs/search/", controllers.jobPositionController.getSearchedJobs)
 	// auth
 	app.post("/signup", auth.signup);
 	app.post("/signin", auth.signin);

@@ -10,10 +10,12 @@ div.container
     div(class="row")
       div(class="form-group")
         div(class="col-md-8 col-md-offset-2")
-          div(class="col-md-10")
-            input(type="search" ng-model="searchText" class="form-control")
+          div(class="col-md-5")
+            input(type="search" ng-model="searchText" class="form-control" placeholder="search text")
+          div(class="col-md-5")
+            input(type="search" ng-model="locationName" class="form-control" placeholder="location")
           div(class="col-md-2")
-            button(class="btn btn-primary" ng-click="search(searchText)") Search
+            button(class="btn btn-primary" ng-click="search(searchText, locationName)") Search
     div(class="row" ng-repeat="job in jobs")
       div(class="jobPosition")
           div(class="col-md-2")
