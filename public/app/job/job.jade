@@ -25,5 +25,5 @@ div.container
               h3 {{job.title}}
               h5 {{job.description}}
           div(class="col-md-2")
-            p location
-            p when 
+            p {{job.location}}
+            p {{parseTime(job.createdAt)}}

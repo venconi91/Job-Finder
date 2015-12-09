@@ -36,13 +36,13 @@ module.exports = {
             res.send(positions)
         })
         .catch(function(err){
-            res.send(err);
+            res.send(err); // set status code
         })
     },
     getSearchedJobs: function(req, res){ // check if can be in one method with get all positions
         var searchText = req.query.searchText.trim() || "";
         var locationName = req.query.locationName.trim() || "";
-        
+
         models.JobPosition
         .findAll({
             where: {

@@ -16,4 +16,8 @@ app.controller('jobCtrl', function($scope, jobService) {
             console.log(error)
         })
 	}
+
+	$scope.parseTime = function(time){
+		return moment(time).fromNow()
+	}
 });
