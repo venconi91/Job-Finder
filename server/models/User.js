@@ -57,6 +57,7 @@ var User = sequelize.define('User', {
       associate: function(models){
         User.hasMany(models.Apply);
         User.hasMany(models.JobPosition);
+        User.hasMany(models.Events);
         //User.hasMany(models.JobPosition);
         User.belongsToMany( models.JobPosition, {
           as: "Apply",
