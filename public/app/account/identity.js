@@ -15,7 +15,7 @@ app.factory('identity', function($window, UsersResource) {
             return !!this.currentUser && this.currentUser.roles.indexOf(role) > -1;
         },
         isCompany: function() {
-            return !!this.currentUser && this.currentUser.roles.indexOf(companyRole) > -1;
+            return !!this.currentUser && !!this.currentUser.roles && this.currentUser.roles.indexOf(companyRole) > -1;
         }
     }
 });

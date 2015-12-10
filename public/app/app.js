@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngResource', 'ngRoute']).value('toastr', toastr);
+var app = angular.module('app', ['ngResource', 'ngRoute', 'mwl.calendar', 'ui.bootstrap']).value('toastr', toastr);
 
 app.config(function($routeProvider, $locationProvider) {
 
@@ -39,6 +39,10 @@ app.config(function($routeProvider, $locationProvider) {
         .when("/jobs", { // only when company
             templateUrl: "partials/job/job.jade",
             controller: "jobCtrl"
+        })
+        .when("/events", {
+            templateUrl: "partials/events/events.jade",
+            controller: "eventsCtrl"
         })
 
     app.run(function($rootScope, $location) {
