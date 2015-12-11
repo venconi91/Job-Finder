@@ -1,3 +1,15 @@
 .container
-    div(mwl-calendar view="calendarView" current-day="calendarDay" events="events" view-title="calendarTitle" on-event-click="eventClicked(calendarEvent)" edit-event-html="" delete-event-html="" on-edit-event-click="eventEdited(calendarEvent)" on-delete-event-click="eventDeleted(calendarEvent)" cell-is-open="true")
-    p {{calendarDay}}
+    h2 {{calendarTitle}}
+    div(class="row")
+        div(class="col-md-6 text-center")
+            div(class="btn-group")
+                button(class="btn btn-primary" mwl-date-modifier date="calendarDay" decrement="calendarView") Previous
+                button(class="btn btn-primary" mwl-date-modifier date="calendarDay" set-to-today) Today
+                button(class="btn btn-primary" mwl-date-modifier date="calendarDay" increment="calendarView") Next
+        div(class="col-md-6 text-center")
+            div(class="btn-group")
+                button(class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'year'") Year
+                button(class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'month'") Month
+                button(class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'week'") Week
+                button(class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'day'") Day
+    div(mwl-calendar view="calendarView" current-day="calendarDay" events="events" view-title="calendarTitle" on-event-click="eventClicked(calendarEvent)" on-event-times-changed="calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd" edit-event-html="" delete-event-html="" on-edit-event-click="eventEdited(calendarEvent)" on-delete-event-click="eventDeleted(calendarEvent)" cell-is-open="true")
