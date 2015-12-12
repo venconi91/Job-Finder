@@ -46,18 +46,20 @@ module.exports = {
         models.JobPosition
         .findAll({
             where: {
-                $or: [{
-                    title: {
-                        $like: "%" + searchText + "%"
-                    }
-                },{
-                    description: {
-                        $like: "%" + searchText + "%"
-                    }
-                },{
+                $and: [{
                     location: {
                         $like: "%" + locationName + "%"
                     }
+                },{
+                    $or: [{
+                        title: {
+                            $like: "%" + searchText + "%"
+                        }
+                    }, {
+                        description: {
+                            $like: "%" + searchText + "%"
+                        }
+                    }]
                 }]
             }
         })

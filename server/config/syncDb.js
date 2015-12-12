@@ -76,4 +76,24 @@ function seedJobs(){
   }
   var jobPosition2 = models.JobPosition.build(obj2);
   jobPosition2.save();
+
+  var obj3 = {
+    "title": "javascript developer",
+    "description": "we are looking for a javascript developer",
+    "salary": 1234,
+    "location": "plovdiv",
+    "UserId": 1
+  }
+  var jobPosition3 = models.JobPosition.build(obj3);
+  jobPosition3.save();
+
+  var obj4 = {
+    "title": "ruby developer",
+    "description": "we are looking for a ruby developer",
+    "salary": 1234,
+    "location": "pernik",
+    "UserId": 1
+  }
+  var jobPosition4 = models.JobPosition.build(obj4);
+  jobPosition4.save();
 }
