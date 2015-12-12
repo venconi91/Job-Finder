@@ -20,6 +20,10 @@ script(type="text/javascript" src="/app/account/auth.js")
 script(type="text/javascript" src="/app/account/usersResource.js")
 script(type="text/javascript" src="/app/common/notifier.js")
 
+script(type="text/javascript" src="/app/applyings/applyingsCtrl.js")
+script(type="text/javascript" src="/app/applyings/applyingsResource.js")
+script(type="text/javascript" src="/app/applyings/applyingsService.js")
+
 script(type="text/javascript" src="/app/position/positionCtrl.js")
 script(type="text/javascript" src="/app/position/positionResource.js")
 script(type="text/javascript" src="/app/position/positionService.js")
@@ -28,11 +32,11 @@ script(type="text/javascript" src="/app/job/jobCtrl.js")
 script(type="text/javascript" src="/app/job/jobResource.js")
 script(type="text/javascript" src="/app/job/jobService.js")
 
-
 script(type="text/javascript" src="/app/events/eventsCtrl.js")
 
 script(type="text/javascript" src="/app/events/eventsService.js")
 
 script(type="text/javascript" src="/app/nav/navCtrl.js")
 script(type="text/javascript" src="/app/profile/profileCtrl.js")
-// services
+
+// reorder angular modules loading => resources -> services -> controllers

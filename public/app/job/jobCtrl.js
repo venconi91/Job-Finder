@@ -1,5 +1,7 @@
-app.controller('jobCtrl', function($scope, jobService) {
+app.controller('jobCtrl', function($scope, jobService, identity, notifier, applyingsService) {
 	
+	$scope.identity = identity;
+
 	jobService.getJobs().then(function(jobs){
 		$scope.jobs  = jobs;
 	}, function(err){
@@ -19,5 +21,17 @@ app.controller('jobCtrl', function($scope, jobService) {
 
 	$scope.parseTime = function(time){
 		return moment(time).fromNow()
+	}
+
+	$scope.apply = function(positionId){
+		
+		console.log(positionId);
+		applyingsService
+		.apply(positionId)
+		.then(function(res){
+			notifier.success('Applying Successfull!');
+		}, function(err){
+			notifier.error('Something Bad Happened!');
+		});
 	}
 });

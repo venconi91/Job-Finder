@@ -4,6 +4,8 @@
             a(href="#/signin") Login
         li
             a(href="#/jobs") Jobs
+        li(ng-show="identity.isUser()")
+            a(href="#/myApplyings") My Applyings
         li
             a(href="#/events") Events
         li(ng-show="identity.isCompany()")

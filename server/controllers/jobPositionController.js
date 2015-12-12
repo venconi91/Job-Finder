@@ -9,7 +9,7 @@ module.exports = {
             res.send(newPosition);
         })
         .catch(function(err){
-            res.send(err);
+            res.status(400).send(err);
         })
     },
     updatePosition: function (req, res) {

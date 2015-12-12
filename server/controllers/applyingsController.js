@@ -1,16 +1,27 @@
-var sequelize = require("../config/config").getSequelize();
-var Apply = require("../models/Apply");
+var models = require("../models");
 
 module.exports = {
 	createApplying: function (req, res) {
-        Applying.create({
-			title: 'title test POST',
-			description: 'description test POST',
-			salary: 4321,
-			user: 1
-		}).then(function(applying){
-			res.send(applying);
-		})
+        var positionId = req.body.positionId;
+        console.log(positionId);
+        models.JobPosition
+        .findById(positionId)
+        .then(function(jobPosition){
+            // if user has applied already db constraing error
+            models.Apply.create({
+                JobPositionId: jobPosition.dataValues.id,
+                UserId: req.user.id
+            })
+            .then(function(apply){
+                res.send(apply);
+            })
+            .catch(function(err){
+                res.status(404).send(err);
+            })
+        })
+        .catch(function(err){
+            res.status(404).send(err);
+        })
     },
     updateApplying: function (req, res) {
         

@@ -8,7 +8,6 @@ app.controller('signinCtrl', function($scope, $location, notifier, identity, aut
 
     $scope.signin = function(user) {
         auth.signin(user).then(function(success) {
-        	console.log(success);
             if (success) {
                 notifier.success('Successful login!');
             }

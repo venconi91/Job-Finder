@@ -16,14 +16,17 @@ div.container
             input(type="search" ng-model="locationName" class="form-control" placeholder="location")
           div(class="col-md-2")
             button(class="btn btn-primary" ng-click="search(searchText, locationName)") Search
-    div(class="row" ng-repeat="job in jobs")
+    div(class="row well bs-component" ng-repeat="job in jobs")
       div(class="jobPosition")
           div(class="col-md-2")
             p picture
-          div(class="col-md-8")
+          div(class="col-md-7")
             div(class="row")
-              h3 {{job.title}}
+              h3(class="jobPositionTitle") {{job.title}}
               h5 {{job.description}}
           div(class="col-md-2")
             p {{job.location}}
             p {{parseTime(job.createdAt)}}
+          div(class="col-md-1")
+            div(class="row" ng-hide="identity.isCompany()")
+              button(class="btn btn-info btn-sm" ng-click="apply(job.id)") apply
