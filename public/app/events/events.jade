@@ -13,3 +13,42 @@
                 button(class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'week'") Week
                 button(class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'day'") Day
     div(mwl-calendar view="calendarView" current-day="calendarDay" events="events" view-title="calendarTitle" on-event-click="eventClicked(calendarEvent)" on-event-times-changed="calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd" edit-event-html="" delete-event-html="" on-edit-event-click="eventEdited(calendarEvent)" on-delete-event-click="eventDeleted(calendarEvent)" cell-is-open="true")
+    h3(id="newEvent" class="text-center")
+        button(class="btn btn-primary" ng-click="addNewEvent()") Add New Event
+    div(class="row")
+        table(class="table table-bordered" ng-show="newEvent")
+            thead
+                tr
+                    th Title
+                    th type
+                    th Starts at
+                    th Ends at
+                    th Save
+            tbody
+                tr
+                    td
+                        input(type="text" class="form-control" ng-model="newEvent.title")
+                    td
+                        select(ng-model="newEvent.type" class="form-control")
+                            option(value="important") Important
+                            option(value="warning") Warning
+                            option(value="info") Info
+                            option(value="inverse") Inverse
+                            option(value="success") Success
+                            option(value="special") Special
+                    td
+                        p(class="input-group" style="max-width: 250px")
+                            input(type="text" class="form-control" readonly uib-datepicker-popup="dd MMMM yyyy" ng-model="newEvent.startsAt" is-open="newEvent.startOpen" close-text="Close")
+                            span(class="input-group-btn")
+                                button(type="button" class="btn btn-default" ng-click="toggle($event, 'startOpen', newEvent)")
+                                    i(class="glyphicon glyphicon-calendar")
+                        uib-timepicker(ng-model="newEvent.startsAt" hour-step="1" minute-step="15" show-meridian="true")
+                    td
+                        p(class="input-group" style="max-width: 250px")
+                            input(type="text" class="form-control" readonly uib-datepicker-popup="dd MMMM yyyy" ng-model="newEvent.startsAt" is-open="newEvent.endOpen" close-text="Close")
+                            span(class="input-group-btn")
+                                button(type="button" class="btn btn-default" ng-click="toggle($event, 'endOpen', newEvent)")
+                                    i(class="glyphicon glyphicon-calendar")
+                        uib-timepicker(ng-model="newEvent.endsAt" hour-step="1" minute-step="15" show-meridian="true")
+                    td
+                        button(class="btn btn-primary" ng-click="saveNewEvent(newEvent)") Save

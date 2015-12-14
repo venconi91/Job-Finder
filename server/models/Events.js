@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes){
         type: Sequelize.DATE
       },
       type: {
-        type: Sequelize.STRING,
+        type: Sequelize.ENUM("important", "warning", "info", "inverse", "success", "special"),
       },
       location: {
         type: Sequelize.STRING
