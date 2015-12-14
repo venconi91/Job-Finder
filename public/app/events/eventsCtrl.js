@@ -1,4 +1,4 @@
-app.controller('eventsCtrl', function($scope) {
+app.controller('eventsCtrl', function($scope, eventsService) {
 	$scope.events = [
 	  {
 	    title: '1 event My event title', // The title of the event
@@ -86,18 +86,10 @@ app.controller('eventsCtrl', function($scope) {
 	$scope.newEvent;
 
 	$scope.addNewEvent = function(){
-		//var date = new Date();
-		//var dateFormat = new Date()
-		// $scope.newEvent = {
-		// 	title: ' 4 eventMy event title',
-		//     type: 'info',
-		//     startsAt: date.toISOString(),
-		//     endsAt: date.toISOString(),
-		// }
 		var dateNow = moment().utc();
 		var startsAt = new Date(dateNow.year(), dateNow.date(), dateNow.month(), dateNow.hour(), dateNow.minute())
 		$scope.newEvent = {
-			title: ' 4 eventMy event title',
+			title: 'new event',
 		    type: 'info',
 		    startsAt: startsAt,
 		    endsAt: startsAt,
@@ -106,6 +98,13 @@ app.controller('eventsCtrl', function($scope) {
 
 	$scope.saveNewEvent = function(newEvent){
 		console.log(newEvent)
+		eventsService.createEvent(newEvent)
+        .then(function(newEvent){
+        	//$scope.allPositions.push(newPosition)
+        	console.log(newEvent)
+        }, function(err){
+        	console.log(err)
+        });
 	}
 
 	$scope.toggle = function($event, field, event) {
