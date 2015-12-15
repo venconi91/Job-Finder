@@ -23,7 +23,9 @@ module.exports = function(app){
 
 	app.get("/api/jobs", controllers.jobPositionController.getAllPositions);
 	app.get("/api/jobs/search/", controllers.jobPositionController.getSearchedJobs)
-	
+
+	app.get("/api/events", controllers.eventsController.getEvents)
+	app.post("/api/events", controllers.eventsController.createEvent)	
 
 	// auth
 	app.post("/signup", auth.signup);
