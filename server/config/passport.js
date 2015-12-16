@@ -41,9 +41,6 @@ module.exports = function() {
             id: id
           }
         }).then(function(user) {
-            //case 1: done(true,user) ;
-            // case 2: done(false, null) 
-            console.log("deserialise useeeeeeeeeeeeeeer")
           var err = (!user) ? true : false; 
           done(err, user);
         });

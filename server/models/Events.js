@@ -18,6 +18,9 @@ module.exports = function(sequelize, DataTypes){
       type: {
         type: Sequelize.ENUM("important", "warning", "info", "inverse", "success", "special"),
       },
+      isPublic: {
+        type: Sequelize.BOOLEAN
+      },
       location: {
         type: Sequelize.STRING
       }}, {

@@ -13,14 +13,15 @@ module.exports = {
         })
     },
     getEvents: function(req, res){
-        var userId = req.user.id;
+        var orFilter = [{isPublic: 1}];
+        if (req.isAuthenticated()) {var userId = req.user.id; orFilter.push({UserId: userId})};
+
         models.Event.findAll({
             where: {
-                UserId: userId
+                $or: orFilter
             }
         })
         .then(function(events, count){
-            console.log(count)
             res.send(events)
         })
         .catch(function(err){

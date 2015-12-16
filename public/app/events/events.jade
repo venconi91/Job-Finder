@@ -14,7 +14,7 @@
                 button(class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'day'") Day
     div(mwl-calendar view="calendarView" current-day="calendarDay" events="events" view-title="calendarTitle" on-event-click="eventClicked(calendarEvent)" on-event-times-changed="calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd" edit-event-html="" delete-event-html="" on-edit-event-click="eventEdited(calendarEvent)" on-delete-event-click="eventDeleted(calendarEvent)" cell-is-open="true")
     h3(id="newEvent" class="text-center")
-        button(class="btn btn-primary" ng-click="addNewEvent()") Add New Event
+        button(class="btn btn-primary" ng-click="addNewEvent()" ng-show="identity.isAuthenticated()") Add New Event
     div(class="row")
         table(class="table table-bordered" ng-show="newEvent")
             thead

@@ -1,4 +1,4 @@
-app.controller('eventsCtrl', function($scope, eventsService, notifier) {
+app.controller('eventsCtrl', function($scope, eventsService, notifier, identity) {
 	$scope.calendarDay = new Date();
 	$scope.calendarView = 'month';
 	$scope.toggle = function($event, field, event) {
@@ -8,7 +8,7 @@ app.controller('eventsCtrl', function($scope, eventsService, notifier) {
     };
 
 	$scope.newEvent;
-
+	$scope.identity = identity;
 	$scope.addNewEvent = function(){
 		var dateNow = moment().utc();
 		var startsAt = new Date(dateNow.year(), dateNow.month(), dateNow.date(), dateNow.hour(), dateNow.minute())
