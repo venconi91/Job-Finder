@@ -15,6 +15,7 @@ module.exports = function(app){
 	// user applyings
 	app.get("/api/applyings", controllers.applyings.getAllApplyings);
 	app.post("/api/applyings", controllers.applyings.createApplying);
+	app.get("/api/myApplyings", controllers.applyings.getMyApplyings)
 
 	// company applyings management
 	//app.get("/api/allPositions", controllers.jobPositionController.getAllPositions);
@@ -25,7 +26,7 @@ module.exports = function(app){
 	app.get("/api/jobs/search/", controllers.jobPositionController.getSearchedJobs)
 
 	app.get("/api/events", controllers.eventsController.getEvents)
-	app.post("/api/events", controllers.eventsController.createEvent)	
+	app.post("/api/events", controllers.eventsController.createEvent)
 
 	// auth
 	app.post("/signup", auth.signup);

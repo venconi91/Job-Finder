@@ -4,4 +4,8 @@ body {
 
 .jobPositionTitle {
 	margin-top: 0px;
-};
+}
+
+img.myApplyingsImages {
+	width: 50px;
+}

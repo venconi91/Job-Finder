@@ -16,9 +16,20 @@ module.exports = {
         
     },
     getAllPositions: function (req, res) {
-        models.JobPosition.findAll()           // add filter
+        //var userId = 2;
+        models.JobPosition
+        .findAll({
+            include: [{
+                model: models.User
+            }]
+        })
         .then(function(jobPositions){
+            //console.log(jobPositions);
         	res.send(jobPositions);
+        })
+        .catch(function(err){
+            //console.log(err);
+            res.status(404).send(err);
         });
         
     },
@@ -27,7 +38,7 @@ module.exports = {
     },
     getMyPositions: function(req, res){
         var companyId = req.user.id;
-        models.JobPosition.findAll({
+        models.JobPosition.findAll({ 
             where: {
                 UserId: companyId
             }
@@ -36,7 +47,7 @@ module.exports = {
             res.send(positions)
         })
         .catch(function(err){
-            res.send(err); // set status code
+            res.status(404).send(err); // set status code
         })
     },
     getSearchedJobs: function(req, res){ // check if can be in one method with get all positions

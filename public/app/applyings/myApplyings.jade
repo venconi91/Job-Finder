@@ -1,0 +1,12 @@
+div.container
+  div(class="row well bs-component" ng-repeat="apply in myApplyings")
+    div(class="col-md-1")
+      img(src="/images/default_avatar.jpg" ng-src="{{apply.profileImageURL}}" class="myApplyingsImages")
+      div(class="row text-center")
+        p {{apply.username}}
+    div(class="col-md-8")
+      div(class="row")
+        h3(class="jobPositionTitle") {{apply.title}}
+    div(class="col-md-2")
+      p Location: {{apply.location}}
+      p Applyed: {{parseTime(apply.createdAt)}}

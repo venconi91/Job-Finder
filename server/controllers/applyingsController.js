@@ -3,7 +3,6 @@ var models = require("../models");
 module.exports = {
 	createApplying: function (req, res) {
         var positionId = req.body.positionId;
-        console.log(positionId);
         models.JobPosition
         .findById(positionId)
         .then(function(jobPosition){
@@ -27,12 +26,25 @@ module.exports = {
         
     },
     getAllApplyings: function (req, res) {
-        Applying.findAll().then(function(applyings){
+        models.Apply.findAll()
+        .then(function(applyings){
         	res.send(applyings);
         });
         
     },
     deleteApplying: function(req, res) {
         
+    },
+    getMyApplyings: function(req, res){
+        var userId = req.user.id;
+
+        models.sequelize.query('SELECT jp.title, jp.salary, jp.location, u.username, u.profileImageURL, a.createdAt FROM jobpositions jp join applies a on jp.id = a.JobPositionId join users u on u.id = jp.UserId where a.UserId = ?',
+          { replacements: [userId], type: models.sequelize.QueryTypes.SELECT }
+        )
+        .then(function(applies){
+            res.send(applies);
+        }).catch(function(err){
+            res.status(404).send(err);
+        })
     }
 }
