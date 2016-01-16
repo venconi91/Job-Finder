@@ -46,5 +46,20 @@ module.exports = {
         }).catch(function(err){
             res.status(404).send(err);
         })
+    },
+    getApplyed: function(req, res){
+        var jobPositionId = req.query.jobPositionId;
+        if (isNaN(parseInt(jobPositionId, 10))) {
+            res.status(400).send();
+        }
+
+        models.sequelize.query('SELECT u.id as "userId", u.email, u.username, u.profileImageURL, a.createdAt, a.JobPositionId as "jobPositionId" FROM applies a join users u on a.userId = u.id where a.JobPositionId = ?',
+          { replacements: [jobPositionId], type: models.sequelize.QueryTypes.SELECT }
+        )
+        .then(function(applyed){
+            res.send(applyed);
+        }).catch(function(err){
+            res.status(404).send(err);
+        })
     }
 }

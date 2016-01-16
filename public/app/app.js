@@ -48,6 +48,10 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: "partials/applyings/myApplyings.jade",
             controller: "applyingsCtrl"
         })
+        .when("/applyed", {
+            templateUrl: "partials/applyings/applyed.jade",
+            controller: "applyedCtrl"
+        })
 
     app.run(function($rootScope, $location) {
         $rootScope.$on('$routeChangeError', function(ev, current, previous, rejection) {

@@ -28,5 +28,5 @@ div.container
             p {{job.location}}
             p {{parseTime(job.createdAt)}}
           div(class="col-md-1")
-            div(class="row" ng-hide="identity.isCompany()")
+            div(class="row" ng-hide="identity.isCompany() || !identity.isAuthenticated()")
               button(class="btn btn-info btn-sm" ng-click="apply(job.id)") apply

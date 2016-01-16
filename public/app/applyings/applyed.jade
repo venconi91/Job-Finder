@@ -1,0 +1,39 @@
+.container
+  div(class="col-md-7")
+    div(class="row")
+      div(class="col-md-12" ng-repeat="position in allPositions")
+        div(class="well bs-component")
+          div(class="panel-title") 
+            label Title:
+            |   {{position.title}}
+          div(class="panel-body")
+            div(class="col-md-9")
+              p 
+                label Description: 
+                |   {{position.description}}
+              p 
+                label Salary:
+                |   {{position.salary}}
+              p 
+                label Location: 
+                |   {{position.location}}
+            div(class="col-md-3")
+              button(class="btn btn-info" ng-click="showApplyed(position.id)") Show applyed users
+  div(class="col-md-5")
+    div(class="row")
+      div(class="col-md-12" ng-repeat="apply in applyes")
+        div(class="well bs-component")
+            div(class="panel-title") 
+              label User:
+              |   {{apply.username}}
+            div(class="panel-body")
+              div(class="col-md-2")
+                img(class="myApplyingsImages" src="/images/default_avatar.jpg" ng-src="{{apply.profileImageURL}}")
+              div(class="col-md-6")
+                label Email:
+                |   {{apply.email}}
+              div(class="col-md-2")
+                div
+                  button(class="btn btn-success" ng-click="write()") Write 
+                div
+                  button(class="btn btn-danger" ng-click="remove(apply.jobPositionId, apply.userId)") Remove

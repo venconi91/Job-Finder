@@ -15,7 +15,8 @@ module.exports = function(app){
 	// user applyings
 	app.get("/api/applyings", controllers.applyings.getAllApplyings);
 	app.post("/api/applyings", controllers.applyings.createApplying);
-	app.get("/api/myApplyings", controllers.applyings.getMyApplyings)
+	app.get("/api/myApplyings", controllers.applyings.getMyApplyings);
+	app.get("/api/applyed", controllers.applyings.getApplyed)
 
 	// company applyings management
 	//app.get("/api/allPositions", controllers.jobPositionController.getAllPositions);
